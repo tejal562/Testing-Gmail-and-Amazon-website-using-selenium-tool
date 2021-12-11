@@ -1,0 +1,50 @@
+package Seleniumgmail;
+
+import org.openqa.selenium.By;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GmailTest
+{
+	
+	  WebDriver driver;
+	  public void launchBrowser() throws InterruptedException 
+	  {
+		  System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator.DESKTOP-R4FAM4Q\\Downloads\\chromedriver_win32 (3)\\chromedriver.exe");
+		  driver = new ChromeDriver();
+		  
+		  driver.get("https://www.gmail.com/");
+	    	driver.manage().window().maximize();
+	    	driver.findElement(By.id("identifierId")).sendKeys("tejaljadhav798@gmail.com");
+	    	Thread.sleep(2000);
+	    	driver.findElement(By.className("VfPpkd-LgbsSe")).click();
+	    	Thread.sleep(2000);
+	    	
+	    	String actual_title = driver.getTitle();
+	    	String expected_title = "gmail";
+	    	if(actual_title.equalsIgnoreCase(expected_title)) 
+	    	{
+	    		System.out.print("Successful test run");
+	    		
+	    	}
+	    	else 
+	    		
+	    	{
+	    		System.out.print("Failed test run");
+	    	
+	    	}
+	    	//driver.close();
+	     }
+	    
+	  
+	public static void main(String[] args) throws InterruptedException 
+	{
+		// TODO Auto-generated method stub
+
+		 GmailTest obj = new GmailTest();
+	      obj.launchBrowser();
+	}
+
+}
